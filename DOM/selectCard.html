@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>卡片选择</title>
+	<style>
+		div{ width:200px; height:300px; display:none; border:1px solid black; margin-top: 10px}
+		.active{ background:pink; }
+	</style>
+</head>
+<body>
+	<button  class="active">教育</button>
+	<button>招生</button>
+	<button>就业</button>
+	<div style="display:block">这是教育专栏</div>
+	<div>这是招生专栏</div>
+	<div>这是就业专栏</div>
+</body>
+<script>
+	window.onload=function(){
+		var aBtn = document.getElementsByTagName("button");
+		var aDiv = document.getElementsByTagName("div");
+		var length = aBtn.length;
+		for(var i = 0; i < length; i++){
+			aBtn[i].index = i;
+			aBtn[i].onclick = function(){
+				for(var j = 0; j < length; j++){
+					aBtn[j].className = "";
+					aDiv[j].style.display = "none";
+				}
+				this.className = "active";
+				aDiv[this.index].style.display = "block";
+			};
+		}
+	}
+</script>
+</html>
