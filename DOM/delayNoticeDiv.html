@@ -5,7 +5,7 @@
 	<title>延时提示框</title>
 	<style>
 		#head{ width:50px; height:50px; background-color: orange; }
-		#info{ width:200px; height:200px; background-color: grey; display:none; margin-top:10px;}
+		#info{ width:200px; height:200px; background-color: blue; display:none; margin:10px;}
 	</style>
 </head>
 <body>
@@ -15,15 +15,15 @@
 </body>
 <script>
 	window.onload=function(){
-		var head = document.getelementbyid("head");
-		var info = document.getelementbyid("info");
+		var head = document.getElementById("head");
+		var info = document.getElementById("info");
 		var timer = null;
 		info.onmouseover = head.onmouseover = function(){
-			cleartimeout(timer);
+			clearTimeout(timer);
 			info.style.display = "block";
 		}
 		info.onmouseout = head.onmouseout = function(){
-			timer = settimeout(function(){
+			timer = setTimeout(function(){
 				info.style.display = "none";
 			},500);
 		}
