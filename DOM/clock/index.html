@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时钟</title>
+	<style>
+		#clock{background-color: #208 ; font-size:65px; color:#ddd;height:90px; width:340px; margin:auto}
+		#clock img{width:25px; height:50px;  }
+	</style>
+</head>
+<script>
+	function toStr(num){
+		return num < 10 ? "0"+num : ""+num;
+	}
+	function clock(){
+        var clock = document.getElementById("clock");
+		var imgs = clock.getElementsByTagName("img");
+		var length = imgs.length;
+		var date = new Date();
+		dateStr = toStr(date.getHours()) + toStr(date.getMinutes()) + toStr(date.getSeconds());
+		for(var i = 0; i < length; i++){
+			imgs[i].src = "images/" + dateStr.charAt(i) + ".png";
+		}
+	}
+	window.onload = function(){
+		setInterval(clock,1000);
+		clock();
+	}
+</script>
+<body>
+	<div id="clock">
+		<img src="" />
+		<img src="" />
+		:
+		<img src="" />
+		<img src="" />
+		:
+		<img src="" />
+		<img src="" />
+	</div>
+</body>
+</html>
