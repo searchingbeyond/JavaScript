@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>延时提示框</title>
+	<style>
+		#head{ width:50px; height:50px; background-color: orange; }
+		#info{ width:200px; height:200px; background-color: grey; display:none; margin-top:10px;}
+	</style>
+</head>
+<body>
+	<!-- 鼠标移到头像部分，显示个人信息 -->
+	<div id="head"></div>	
+	<div id="info"></div>
+</body>
+<script>
+	window.onload=function(){
+		var head = document.getelementbyid("head");
+		var info = document.getelementbyid("info");
+		var timer = null;
+		info.onmouseover = head.onmouseover = function(){
+			cleartimeout(timer);
+			info.style.display = "block";
+		}
+		info.onmouseout = head.onmouseout = function(){
+			timer = settimeout(function(){
+				info.style.display = "none";
+			},500);
+		}
+	}
+</script>
+</html>

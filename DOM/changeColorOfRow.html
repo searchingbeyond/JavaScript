@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>隔行换色</title>
+</head>
+<body>
+	<ul>
+		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
+		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
+		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
+		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
+		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
+		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
+		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
+		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
+		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
+		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
+		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
+	</ul>
+</body>
+<script>
+	function changeColorOfRow( oUl, color){
+		aLi = oUl.getElementsByTagName("li");
+		var length = aLi.length;
+		for(var i = 0; i<length; i++){
+			if( i % 2 ){
+				aLi[i].style.backgroundColor = color;
+			}
+		}
+	}
+	window.onload=function(){
+		var oUl = document.getElementsByTagName("ul")[0];
+		changeColorOfRow( oUl, "#ddd");
+	}
+</script>
+</html>

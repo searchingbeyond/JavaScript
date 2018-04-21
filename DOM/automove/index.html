@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>物体运动</title>
+	<style> 
+		* {padding:0px; margin:0px;}
+		#images{position:relative; height: 100px; margin:200px auto; background-color: grey; width:720px; overflow:hidden; }
+		#images ul{position:absolute; left:0px; top:0px; }
+		#images ul li{float:left; list-style: none; }
+		img{width:180px; height:100px; }
+	</style>
+	<script>
+		
+		window.onload=function(){
+			var speed;
+			document.getElementById("left").onclick = function(){
+				speed = -5;
+			}
+			document.getElementById("right").onclick = function(){
+				speed = 5;
+			}
+			var ul = document.getElementsByTagName('ul')[0];
+			ul.innerHTML = ul.innerHTML + ul.innerHTML;
+			var li = document.getElementsByTagName("li");
+			ul.style.width = li[0].offsetWidth * li.length + "px";
+
+			function move(){
+				if( ul.offsetLeft < - ul.offsetWidth/2){
+					ul.style.left = "0";
+				}
+				if( ul.offsetLeft > 0) {
+					ul.style.left = -ul.offsetWidth/2 + "px";
+				}
+				ul.style.left = ul.offsetLeft + speed +"px";
+			}
+			var timer = setInterval(move,50);
+			ul.onmouseover = function(){
+				clearInterval(timer);
+			}
+			ul.onmouseout = function(){
+			 	timer = setInterval(move,50);
+			}
+		}
+	</script>
+</head>
+<body>
+	<button id='left'>向左滚动</button>
+	<button id='right'>向右滚动</button>
+	<div id="images">
+		<ul>
+			<li><img src="images/x_0000"></li>
+			<li><img src="images/x_0001"></li>
+			<li><img src="images/x_0002"></li>
+			<li><img src="images/x_0003"></li>
+			<!-- <li><img src="images/x_0004"></li>
+			<li><img src="images/x_0005"></li>
+			<li><img src="images/x_0006"></li>
+			<li><img src="images/x_0007"></li> -->
+		</ul>
+	</div>
+</body>
+</html>
