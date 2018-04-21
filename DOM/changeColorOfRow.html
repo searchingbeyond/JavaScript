@@ -6,32 +6,63 @@
 </head>
 <body>
 	<ul>
-		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
-		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
-		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
-		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
-		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
-		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
-		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
-		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
-		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
-		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
-		<li>aaaaaaaaaaaaaaaaaaaaaaaaa</li>
+		<li>88888</li>
+		<li>33333</li>
+		<li>66666</li>
+		<li>44444</li>
+		<li>22222</li>
+		<li>55555</li>
+		<li>77777</li>
 	</ul>
+    <button id="sort" >排序</button>
 </body>
 <script>
 	function changeColorOfRow( oUl, color){
 		aLi = oUl.getElementsByTagName("li");
 		var length = aLi.length;
+        var oldcolor = "";
 		for(var i = 0; i<length; i++){
+            //隔行换色
 			if( i % 2 ){
 				aLi[i].style.backgroundColor = color;
-			}
+			} else {
+				aLi[i].style.backgroundColor = "pink";
+            }
+
+            //鼠标所指的一行变色
+            aLi[i].onmouseover = function(){
+                oldcolor = this.style.backgroundColor;
+                this.style.backgroundColor = "yellow";
+            }
+            aLi[i].onmouseout = function(){
+                this.style.backgroundColor = oldcolor;
+            }
 		}
 	}
+    
+    //行排序
+    function sortTheRow(oUl){
+		var aLi = oUl.getElementsByTagName("li");
+        var length = aLi.length;
+        var arr = [];
+        for(i = 0; i<length; i++){
+            arr.push(aLi[i]);//先将集合转为数组
+        } 
+        arr.sort(function(li1, li2){
+            var v1 = parseInt(li1.innerHTML);
+            var v2 = parseInt(li2.innerHTML);
+            return v1 - v2;
+        });
+        for(i =0; i<length; i++){
+            oUl.appendChild(arr[i]); 
+        } 
+    }
+        
+    
 	window.onload=function(){
 		var oUl = document.getElementsByTagName("ul")[0];
-		changeColorOfRow( oUl, "#ddd");
+		changeColorOfRow( oUl, "#4d6");
+        document.getElementById("sort").onclick=function(){sortTheRow(oUl);}
 	}
 </script>
 </html>
