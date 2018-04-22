@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	#div1 {width:100px;height:100px; background:blue; position:absolute; left:0; top:50px;}
+	#div2 {width:1px;height:300px; background:black; position:absolute; left:500px; top:0;}
+</style>
+<body>
+	<button id="move">move</button>
+	<div>
+		<div id="div1"></div>
+		<div id="div2"></div>
+	</div>
+</body>
+<script>
+	var timer = "";
+	function startMove(target){
+		clearInterval(timer);
+		var oDiv1 = document.getElementById("div1");
+		timer = setInterval(function(){
+			var speed = 0;
+			if(oDiv1.offsetLeft > target){
+				speed = -9;
+			} else {
+				speed = 9;
+			}
+			if(Math.abs(oDiv1.offsetLeft - target) <= 9){//认为已经到达目标位置
+				clearInterval(timer);
+				oDiv1.style.left = target + "px";
+			} else {
+				oDiv1.style.left = oDiv1.offsetLeft + speed + "px";
+			}
+		},30);
+	}
+
+	window.onload = function(){
+		var move = document.getElementById("move");
+		move.onclick = function(){
+			startMove(500);
+		}
+	}
+</script>
+</html>
