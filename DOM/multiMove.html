@@ -27,7 +27,7 @@
 		obj.timer = setInterval(function(){
 			var curr=0;
 			if(attr == "opacity"){//修改透明度
-				curr = parseFloat(getStyle(obj,"opacity")) * 100;
+				curr = Math.round(parseFloat(getStyle(obj,"opacity")) * 100);
 			} else {
 				curr = parseInt(getStyle(obj,attr))
 			}
